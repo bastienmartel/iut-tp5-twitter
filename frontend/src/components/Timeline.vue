@@ -1,9 +1,9 @@
 <template>
   <div class="Timeline">
-    <h1>{{ tweets }}</h1>
+    <h1> Bienvenue sur la Timeline ! </h1>
     <ul>
       <li v-for="tweet in tweets">
-        {{ tweet }}
+        {{ tweet.auteur }} : {{ tweet.tweet }}
       </li>
     </ul>
   </div>
@@ -14,7 +14,7 @@ export default {
   name: 'timeline',
   data () {
     return {
-      tweets: ['tweet 1', 'tweet 2', 'tweet 3']
+      tweets: [{auteur: 'Eminem', tweet: 'Mom\'s spaghetti'}, {auteur: 'Obama', tweet: 'Not bad :('}, {auteur: 'Hans', tweet: 'get ze flammenwerfer'}]
     }
   }
 }
