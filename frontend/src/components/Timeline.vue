@@ -1,6 +1,11 @@
 <template>
   <div class="Timeline">
     <h1>{{ tweets }}</h1>
+    <ul>
+      <li v-for="tweet in tweets">
+        {{ tweet }}
+      </li>
+    </ul>
   </div>
 </template>
 
