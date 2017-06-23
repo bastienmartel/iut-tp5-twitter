@@ -1,7 +1,8 @@
 <template>
   <div class="Timeline">
     <h1> Bienvenue sur la Timeline ! </h1>
-    <feed :tweets="tweets" />
+    <div v-if="loading">Chargement des tweets en cours...</div>
+    <div v-else><feed :tweets="tweets"/></div>
   </div>
 </template>
 
@@ -16,15 +17,18 @@ export default {
   components: {Feed},
   data () {
     return {
-      tweets: []
+      tweets: [],
+      loading: true
     }
   },
   methods: {
     fetchTweets: function () {
       this.$http.get('http://localhost:8080/list').then(response => {
         this.tweets = response.body
+        this.loading = false
         console.log(response.body)
       }, response => {
+        this.loading = true
       })
     }},
 
