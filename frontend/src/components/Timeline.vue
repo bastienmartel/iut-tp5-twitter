@@ -1,6 +1,6 @@
 <template>
   <div class="Timeline">
-    <h1> Bienvenue sur la Timeline ! </h1>
+    <h1> ME GUSTA Timeline ! </h1>
     <div v-if="loading">Chargement des tweets en cours...</div>
     <div v-else><feed :tweets="tweets"/></div>
   </div>
@@ -31,7 +31,9 @@ export default {
         this.loading = true
       })
     }},
-
+  retweet: function (id) {
+    this.fetchTweets()
+  },
   created () {
     this.fetchTweets()
   }

@@ -2,7 +2,9 @@
   <div class="Tweet">
     <div>
       <strong> {{ tweet.auteur.nom }} {{ tweet.auteur.prenom }} </strong>
-      <span class="handle">@{{tweet.auteur.handle}} -> {{moment(tweet.date).fromNow()}} </span>
+      <a @click="retweet()">
+        <span class="handle">@{{tweet.auteur.handle}} -> {{moment(tweet.date).fromNow()}} </span>
+      </a>
     </div>
     <div>
       {{tweet.contenu}}
@@ -10,7 +12,7 @@
     <div>
       <ul>
         <li class="button"><icon name="reply"/> </li>
-        <li class="button"><icon name="retweet"/><span>{{tweet.retweeters.length}}</span></li>
+        <li class="button"><a @click="retweet(tweet.id)"><icon name="retweet"/></a><span>{{tweet.retweeters.length}}</span></li>
         <li class="button"><icon name="heart"/></li>
         <li class="button"><icon name="envelope"/></li>
       </ul>
@@ -32,6 +34,12 @@ export default {
   methods: {
     moment: function (date) {
       return moment(date)
+    },
+    retweet: function (id) {
+      var data = new FormData()
+      data.append('utilisateur', 'MeGusta')
+      data.append('tweet', id)
+      this.$http.post('http://localhost:8080/retweet', data, {responseType: 'text'})
     }
   }
 }
