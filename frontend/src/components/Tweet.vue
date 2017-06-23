@@ -10,7 +10,7 @@
     <div>
       <ul>
         <li class="button"><icon name="reply"/> </li>
-        <li class="button"><icon name="retweet"/></li>
+        <li class="button"><icon name="retweet"/><span>{{tweet.retweeters.length}}</span></li>
         <li class="button"><icon name="heart"/></li>
         <li class="button"><icon name="envelope"/></li>
       </ul>
